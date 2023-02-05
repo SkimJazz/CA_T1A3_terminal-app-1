@@ -61,8 +61,13 @@ while True:
     # : todo-4.2.1: if the letter is in the randomWord, print a message
     # : todo-4.2.2: else letter is not in the randomWord, print a message
 
-for letter in genWord:
+
+for letPosition in range(len(genWord)):
+    letter = genWord[letPosition]
     if letter == uGuess:
+        displayWord[letPosition] = letter
         print("Correct! You guessed a letter")
     else:
         print("Incorrect! Try again")
+
+print(displayWord)
