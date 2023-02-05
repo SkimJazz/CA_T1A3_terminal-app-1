@@ -20,69 +20,52 @@ genWord = random.choice(wordList)
 
 wordLength = len(genWord)
 
-# : Todo 1-3: Ask the user to guess a letter
-    # : todo 1-3.1: need user input with a prompt
-    # : todo 1-3.2: convert the user input to lower case
-    # : todo 1-3.3: store the user input in a variable
-    # : todo 1-3.4: check if the user input is a letter
-        # : todo 1-3.4.1: if not a letter, ask the user to enter a letter
 
 
 # : Test the random word generator and user input
-print(f"{genWord}")
+print(f"Word test is: {genWord}")
 
+# : Create a list of underscores(blanks) to display to user
 displayWord = []
-
 for _ in range(wordLength):
     displayWord += "_"
-
-print(displayWord)
-
-
-# Error handling for user input-> only letters allowed
-# while True:
-#     # User input and validation accounting for case sensitivity and Linux/iSO compatibility
-#     uGuess = input("Guess a letter: ").lower()
-#     # 'isalpha' checks if the input is a letter -> Linux/iSO compatible method
-#     if uGuess.isalpha() and len(uGuess) == 1:
-#         # break out of the loop if input is valid
-#         break
-#     print("Invalid input. Please enter a single letter.")
 
 
 endGame = False
 
-
 while not endGame:
 
-    uGuess = input("Guess a letter: ").lower()
+    # : user input for letter guess and exiting game
+    uGuess = input("Guess a letter or type 'exit' to quit game: ").lower()
 
-    for letPosition in range(wordLength):
-        letter = genWord[letPosition]
-        if letter == uGuess:
-            displayWord[letPosition] = letter
+    # : game exit
+    if uGuess == "exit":
+        print("Yeah Nice! Catch ya next time")
+        endGame = True
+        break
 
-            print("Correct! You guessed a letter")
-        else:
-            print("Incorrect! Try again")
+    # : user input error handling-> letters only
+    if uGuess.isalpha() and len(uGuess) == 1:
 
-    print(displayWord)
+        # : cross-reference users letter guess with letter in genWord
+        for letterPosition in range(wordLength):
+            letter = genWord[letterPosition]
+
+            # : if the letter is in the word, replace the underscore with the letter
+            if letter == uGuess:
+                displayWord[letterPosition] = letter
+
+        print(displayWord)
 
     # NOTE: CAREFUL this can easily end up as a 'infinite loop' if the condition is not met.
     # A while loop requires some sort of change that changes the condition that the loop is dependent on to
     # break out of the loop. In this case, if there are no more underscores in the displayWord list, the user has won
-    if "_" not in displayWord:
-        endGame = True
-        print("You win!")
+        if "_" not in displayWord:
+            endGame = True
+            print("You win!")
+
+    else:
+        print("Invalid input. Please enter a single letter.")
 
 
 
-# for letPosition in range(len(genWord)):
-#     letter = genWord[letPosition]
-#     if letter == uGuess:
-#         displayWord[letPosition] = letter
-#         print("Correct! You guessed a letter")
-#     else:
-#         print("Incorrect! Try again")
-#
-# print(displayWord)
