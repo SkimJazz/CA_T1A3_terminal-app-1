@@ -9,18 +9,16 @@
 
 # : Todo 1-2.1: Add import random to generate random word
 import random
-
-
-# : Todo 1-1: Add a list of words to the game
-wordList = ['eagle', 'penguin', 'wolf',]
+import hangman1_wordList
+# import hangman1_ascii
+# import pandas -> Using Pandas to read from CSV file. CSV file will contain a Riddle for each word in the wordList
+#                The riddle and matching word will be accessed and stored in a dictionary.
 
 
 # : Todo 1-2: Add a random word generator
-genWord = random.choice(wordList)
+genWord = random.choice(hangman1_wordList.wordList)
 
 wordLength = len(genWord)
-
-
 
 # : Test the random word generator and user input
 print(f"Word test is: {genWord}")
@@ -29,7 +27,6 @@ print(f"Word test is: {genWord}")
 displayWord = []
 for _ in range(wordLength):
     displayWord += "_"
-
 
 endGame = False
 
@@ -44,7 +41,7 @@ while not endGame:
         endGame = True
         break
 
-    # : user input error handling-> letters only
+    # : user input error handling-> letters only-> 'isalpha()' Linux/iSO compatible method
     if uGuess.isalpha() and len(uGuess) == 1:
 
         # : cross-reference users letter guess with letter in genWord
@@ -57,15 +54,12 @@ while not endGame:
 
         print(displayWord)
 
-    # NOTE: CAREFUL this can easily end up as a 'infinite loop' if the condition is not met.
-    # A while loop requires some sort of change that changes the condition that the loop is dependent on to
-    # break out of the loop. In this case, if there are no more underscores in the displayWord list, the user has won
+        # NOTE: CAREFUL this can easily end up as a 'infinite loop' if the condition is not met.
+        # A while loop requires some sort of change that changes the condition that the loop is dependent on to
+        # break out of loop. In this case, if there are no more underscores in the displayWord list, the user has won
         if "_" not in displayWord:
             endGame = True
             print("You win!")
 
     else:
         print("Invalid input. Please enter a single letter.")
-
-
-
