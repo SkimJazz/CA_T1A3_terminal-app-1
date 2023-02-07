@@ -9,17 +9,22 @@
 
 import random
 import hangman1_wordList
-import hangman1_ascii
+from hangman1_ascii import intro, stage
+
 
 genWord = random.choice(hangman1_wordList.wordList)
 
+
 wordLength = len(genWord)
+
 
 # User lives
 lives = 6
 
-from hangman1_ascii import intro
+
+# Display intro -> Dyslexic Hangman
 print(intro)
+
 
 # Test the random word generator and user input
 print(f"Word test is: {genWord}")
@@ -69,8 +74,11 @@ while not endGame:
             endGame = True
             print("You win!")
 
-        # Link to hangman stages in hangman1_ascii.py
-        print(hangman1_ascii.stage[lives])
+        # : Method-1 - using 'import hangman1_ascii' and calling the stages from hangman1_ascii.py
+        # print(hangman1_ascii.stage[lives])
+
+        # : Method-2 - using 'from hangman1_ascii import stage' and calling the stages from hangman1_ascii.py
+        print(stage[lives])
 
     else:
         print("Invalid input. Please enter a single letter.")
