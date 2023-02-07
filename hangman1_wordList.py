@@ -1,1 +1,1 @@
-wordList = ['eagle', 'penguin', 'wolf', ]
+wordList = ['eagle', 'penguin', 'wolf', 'quail']
