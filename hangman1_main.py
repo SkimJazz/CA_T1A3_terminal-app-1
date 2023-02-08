@@ -7,6 +7,7 @@
 # : information.
 
 
+import csv
 import random
 import hangman1_wordList
 from hangman1_ascii import intro, stage
@@ -23,11 +24,11 @@ lives = 6
 
 
 # : Display intro -> Dyslexic Hangman
-print(intro)
+print("\n Hey! Welcome to \n ", intro)
 
 
 # : Test the random word generator and user input
-print(f"Word test is: {genWord}")
+# print(f"Word test is: {genWord}")
 
 # : Create a list of underscores(blanks) to display to user
 displayWord = []
@@ -36,7 +37,34 @@ for _ in range(wordLength):
 
 endGame = False
 
-# : Game play loop
+
+# : =================== Read CSV file ====================
+
+with open("hangman1_riddles.csv", "r") as read_obj:
+    reader = csv.DictReader(read_obj)
+    rows = list(reader)
+
+    match_found = False
+    riddle = ""
+    for row in rows:
+        if row['word'] == genWord:
+            match_found = True
+            id = row['id']
+            word = row['word']
+            riddle = row['riddle']
+            break
+
+    if match_found:
+        # print("Match found!")
+        # print("Id:", id)
+        # print("Word:", word)
+        print("\n What am I? \n", riddle)
+    else:
+        print("Match not found.")
+
+
+# : =================== Game play loop ====================
+
 while not endGame:
 
     # : User input for letter guess and exiting game
