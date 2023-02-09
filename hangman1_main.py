@@ -52,7 +52,7 @@ def play_game():
 
     # : =================== Read CSV file ====================
 
-    with open("hangman1_riddles2.csv", "r") as read_obj:
+    with open('hangman1_riddles.csv', "r") as read_obj:
         reader = csv.DictReader(read_obj)
         rows = list(reader)
 
@@ -71,16 +71,18 @@ def play_game():
                 match_found = True
 
                 # : Read from CSV Test -> Get id, word, riddle from row
-                # id = row['id']
+                # key = row.get('id')
                 # word = row['word']
                 riddle = row['riddle']
                 break
 
         # : Print riddle if match found
         if match_found:
-            # print("Id:", id)
+            # print("id:", key)
             # print("Word:", word)
-            print("\nHere's a riddle for you:", "\n", riddle)
+            print("\nHere's a riddle:", "\n")
+            print(riddle)
+            print("\nwhat am I?")
 
         # : Error message if match not found -> should only happen if the word is not in the CSV file
         else:
@@ -100,8 +102,7 @@ def play_game():
         # : Cant use a letter as a break-out condition as letter could be in the word list
         if u_guess == "0":
             print("Yeah Nice! Catch ya next time")
-
-            # end_game = True   # : This is not needed as when the user enters '0' the game will break out of the loop
+            end_game = True   # : This is not needed as when the user enters '0' the game will break out of the loop
             break
 
         # : User input error handling-> letters only-> 'isalpha()' Linux/iSO compatible method
