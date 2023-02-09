@@ -14,7 +14,6 @@ from hangman1_ascii import intro, stage
 
 
 def play_game():
-
     # : Generate a random word from the wordList
     gen_word = random.choice(hangman1_wordList.word_list)
 
@@ -36,8 +35,10 @@ def play_game():
     lives = 6
 
     # : Display intro -> Dyslexic Hangman
-    print("\n Hey! Welcome to", "\n", intro, "\n", "\n",
-          "This Hangman game has a twist. The letters in the word are shuffled. Good luck!")
+    # print("\n")  # : New line
+    print("\nHey! Welcome to")
+    print(intro)
+    print("\nThis Hangman game has a twist. The letters in the word are shuffled. Good luck!")
 
     # : Random word generator test
     # print(f"Word test is: {genWord}")
@@ -51,7 +52,7 @@ def play_game():
 
     # : =================== Read CSV file ====================
 
-    with open("hangman1_riddles.csv", "r") as read_obj:
+    with open("hangman1_riddles2.csv", "r") as read_obj:
         reader = csv.DictReader(read_obj)
         rows = list(reader)
 
@@ -79,8 +80,8 @@ def play_game():
         if match_found:
             # print("Id:", id)
             # print("Word:", word)
-            print("\n What am I?", riddle)
-            # print("\n")
+            print("\nHere's a riddle for you:", "\n", riddle)
+
         # : Error message if match not found -> should only happen if the word is not in the CSV file
         else:
             print("Match not found.")
@@ -90,7 +91,7 @@ def play_game():
     while not end_game:
 
         # : User input for letter guess and exiting game
-        u_guess = input("\n Guess a letter or press 'Zero' and 'Enter' to quit game: ").lower()
+        u_guess = input("\nGuess a letter or press 'Zero' and 'Enter' to quit game: ").lower()
 
         if u_guess in display_word:
             print("You already guessed that letter")
@@ -99,7 +100,8 @@ def play_game():
         # : Cant use a letter as a break-out condition as letter could be in the word list
         if u_guess == "0":
             print("Yeah Nice! Catch ya next time")
-            end_game = True
+
+            # end_game = True   # : This is not needed as when the user enters '0' the game will break out of the loop
             break
 
         # : User input error handling-> letters only-> 'isalpha()' Linux/iSO compatible method
@@ -107,6 +109,7 @@ def play_game():
 
             # : Cross-reference user letter guess with letter in genWord
             for letter_position in range(word_length):
+
                 # letter = genWord[letterPosition]
                 letter = shuffled_word[letter_position]
 
