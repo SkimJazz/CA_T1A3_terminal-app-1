@@ -35,6 +35,7 @@ displayWord = []
 for _ in range(wordLength):
     displayWord += "_"
 
+
 endGame = False
 
 
@@ -44,21 +45,32 @@ with open("hangman1_riddles.csv", "r") as read_obj:
     reader = csv.DictReader(read_obj)
     rows = list(reader)
 
+    # : Search for the word in the CSV file
     match_found = False
+
+    # : Initialize var or PyCharm will lose its shit
     riddle = ""
+
+    # : Iterate over each row in the csv using reader object
     for row in rows:
+
+        # : Check if random genWord matches the word in the CSV file
         if row['word'] == genWord:
+
+            # : Set match_found to True
             match_found = True
+
+            # : Get the id, word and riddle from the row
             id = row['id']
             word = row['word']
             riddle = row['riddle']
             break
 
+    # : Print riddle if match found
     if match_found:
-        # print("Match found!")
-        # print("Id:", id)
-        # print("Word:", word)
-        print("\n What am I? \n", riddle)
+        print("Id:", id)
+        print("Word:", word)
+        print("\nWhat am I?", riddle)
     else:
         print("Match not found.")
 
