@@ -16,7 +16,7 @@ from hangman1_ascii import intro, stage
 def play_game():
 
     # : Generate a random word from the wordList
-    gen_word = random.choice(hangman1_wordList.wordList)
+    gen_word = random.choice(hangman1_wordList.word_list)
 
     # ============= Dyslexic letter shuffle of random word =============
 
