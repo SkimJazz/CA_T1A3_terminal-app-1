@@ -13,10 +13,23 @@ import hangman1_wordList
 from hangman1_ascii import intro, stage
 
 
+# : Generate a random word from the wordList
 genWord = random.choice(hangman1_wordList.wordList)
 
 
-wordLength = len(genWord)
+# ============= Dyslexic letter shuffle of random word =============
+
+# : Convert the randomly generated word to a list
+word_list = list(genWord)
+
+# : Shuffle letters in the list
+random.shuffle(word_list)
+
+# : Convert the shuffled letters back to a string
+shuffled_word = "".join(word_list)
+
+# : Get the length of shuffled word
+wordLength = len(shuffled_word)
 
 
 # : User lives
@@ -24,7 +37,8 @@ lives = 6
 
 
 # : Display intro -> Dyslexic Hangman
-print("\n Hey! Welcome to \n ", intro)
+print("\n Hey! Welcome to", "\n", intro, "\n", "\n",
+      "This Hangman game has a twist. The letters in the word are shuffled. Good luck!")
 
 
 # : Test the random word generator and user input
@@ -97,7 +111,8 @@ while not endGame:
 
         # : Cross-reference user letter guess with letter in genWord
         for letterPosition in range(wordLength):
-            letter = genWord[letterPosition]
+            # letter = genWord[letterPosition]
+            letter = shuffled_word[letterPosition]
 
             # : If the letter is in word, replace the underscore with the letter
             if letter == uGuess:
@@ -116,7 +131,7 @@ while not endGame:
         # : While loop BREAK OUT condition -> if no more underscores in the displayWord list, user has won game
         elif "_" not in displayWord:
             endGame = True
-            print("You win!")
+            print(f"You win! The Animal was {genWord}")
 
         # : Method - using 'from hangman1_ascii import stage' and calling the stages from hangman1_ascii.py
         print(stage[lives])
