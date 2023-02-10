@@ -39,7 +39,7 @@ def play_game():
     print(intro)
     print("\nThis Hangman game has a twist. The letters in the word are shuffled. Good luck!")
 
-    # : Random word generator test
+    # : ERROR handling -> random word generator -> ref hangman1_test.py for function test
     # print(f"Word test is: {gen_word}")
 
     # : Create a list of underscores(blanks) to display to user
@@ -51,7 +51,7 @@ def play_game():
 
     # : =================== Read CSV file ====================
 
-    with open('hangman1_riddles.csv', "r") as read_obj:
+    with open('hangman1_clue.csv', "r") as read_obj:
         reader = csv.DictReader(read_obj)
         rows = list(reader)
 
@@ -66,24 +66,24 @@ def play_game():
 
             # : Check if random genWord matches the word in the CSV file
             if row['word'] == gen_word:
-                # : Set match_found to True
+
                 match_found = True
 
-                # : Read from CSV Test -> Get id, word, riddle from row
-                # key = row['id']
-                word = row['word']
+                # : ERROR handling -> read from csv -> Get id, word, riddle from row
+                # key = row.get('id')   # output = None
+                # word = row['word']
                 riddle = row['riddle']
                 break
 
         # : Print riddle if match found
         if match_found:
             # print("id:", key)
-            print("Word:", word)
+            # print("Word:", word)
             print("\nHere's a riddle:", "\n")
             print(riddle)
             print("\nwhat am I?")
 
-        # : Error handling message if match not found
+        # : ERROR handling -> message if match not found
         else:
             print("Match not found.")
 
@@ -98,7 +98,7 @@ def play_game():
         if u_guess in display_word:
             print("You already guessed that letter")
 
-        # : User option to exit game at letter guessing stage
+        # : EXIT game option at letter guessing stage
         # : Cant use letters as a break-out condition, as letter could be in the word list
         if u_guess == "0":
             print("Yeah Nice! Catch ya next time")
