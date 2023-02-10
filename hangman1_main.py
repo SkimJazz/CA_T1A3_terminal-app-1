@@ -35,13 +35,12 @@ def play_game():
     lives = 6
 
     # : Display intro -> Dyslexic Hangman
-    # print("\n")  # : New line
     print("\nHey! Welcome to")
     print(intro)
     print("\nThis Hangman game has a twist. The letters in the word are shuffled. Good luck!")
 
     # : Random word generator test
-    # print(f"Word test is: {genWord}")
+    # print(f"Word test is: {gen_word}")
 
     # : Create a list of underscores(blanks) to display to user
     display_word = []
@@ -71,20 +70,20 @@ def play_game():
                 match_found = True
 
                 # : Read from CSV Test -> Get id, word, riddle from row
-                # key = row.get('id')
-                # word = row['word']
+                # key = row['id']
+                word = row['word']
                 riddle = row['riddle']
                 break
 
         # : Print riddle if match found
         if match_found:
             # print("id:", key)
-            # print("Word:", word)
+            print("Word:", word)
             print("\nHere's a riddle:", "\n")
             print(riddle)
             print("\nwhat am I?")
 
-        # : Error message if match not found -> should only happen if the word is not in the CSV file
+        # : Error handling message if match not found
         else:
             print("Match not found.")
 
@@ -95,32 +94,34 @@ def play_game():
         # : User input for letter guess and exiting game
         u_guess = input("\nGuess a letter or press 'Zero' and 'Enter' to quit game: ").lower()
 
+        # : Error handling for already guessed letters
         if u_guess in display_word:
             print("You already guessed that letter")
 
         # : User option to exit game at letter guessing stage
-        # : Cant use a letter as a break-out condition as letter could be in the word list
+        # : Cant use letters as a break-out condition, as letter could be in the word list
         if u_guess == "0":
             print("Yeah Nice! Catch ya next time")
-            end_game = True   # : This is not needed as when the user enters '0' the game will break out of the loop
+            # end_game = True  # : Not needed -> entering '0' will break out of the loop
             break
 
         # : User input error handling-> letters only-> 'isalpha()' Linux/iSO compatible method
         if u_guess.isalpha() and len(u_guess) == 1:
 
-            # : Cross-reference user letter guess with letter in genWord
+            # : Cross-reference user letter guess with letter in gen_word
             for letter_position in range(word_length):
 
-                # letter = genWord[letterPosition]
+                # : Get letter at the position
                 letter = shuffled_word[letter_position]
 
                 # : If the letter is in word, replace the underscore with the letter
                 if letter == u_guess:
                     display_word[letter_position] = letter
 
+            # : Print the display_word list as a string
             print(" ".join(display_word))
 
-            # : If the letter is not in the word, remove a life
+            # : If the letter not in word -> remove a life
             if u_guess not in gen_word:
                 print(f"You guessed {u_guess}, that's not in the word. You lose a life")
                 lives -= 1
@@ -128,7 +129,7 @@ def play_game():
                     end_game = True
                     print("You lose!")
 
-            # : While loop BREAK OUT condition -> if no more underscores in the displayWord list, user has won game
+            # : While loop BREAK OUT condition -> if no more underscores in display_word list, user has won game
             elif "_" not in display_word:
                 end_game = True
                 print(f"You win! The word was {gen_word}")
