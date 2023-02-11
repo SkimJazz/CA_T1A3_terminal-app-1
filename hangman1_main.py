@@ -14,10 +14,17 @@ from hangman1_ascii import intro, stage
 
 
 def play_game():
-    # : Generate a random word from the wordList
-    gen_word = random.choice(hangman1_wordList.word_list)
 
-    # ============= Dyslexic letter shuffle of random word =============
+    # : =================== ASCII art Intro ====================
+
+    print("\nHey! Welcome to")
+    print(intro)
+    print("\nThis Hangman game has a twist. The letters in the word are shuffled. Good luck!")
+
+    # : =================== Random word & letter shuffle ====================
+
+    # : Randomly select a word from the wordList
+    gen_word = random.choice(hangman1_wordList.word_list)
 
     # : Convert the randomly generated word to a list
     word_list = list(gen_word)
@@ -31,23 +38,16 @@ def play_game():
     # : Get the length of shuffled word
     word_length = len(shuffled_word)
 
-    # : User lives
-    lives = 6
-
-    # : Display intro -> Dyslexic Hangman
-    print("\nHey! Welcome to")
-    print(intro)
-    print("\nThis Hangman game has a twist. The letters in the word are shuffled. Good luck!")
-
-    # : ERROR handling -> random word generator -> ref hangman1_test.py for function test
-    # print(f"Word test is: {gen_word}")
-
-    # : Create a list of underscores(blanks) to display to user
     display_word = []
     for _ in range(word_length):
         display_word += "_"
 
+    # print(f"Word test is: {gen_word}") # : ERROR handling -> random word generator
+
+    # : =================== Game variables ====================
+
     end_game = False
+    lives = 6  # : 6 incorrect guesses before game over -> 6 stages of ASCII art
 
     # : =================== Read CSV file ====================
 
@@ -55,30 +55,25 @@ def play_game():
         reader = csv.DictReader(read_obj)
         rows = list(reader)
 
-        # : Search for the word in the CSV file
+        # : Search for word in CSV file
         match_found = False
 
         # : Initialize var or PyCharm will lose its shit
         riddle = ""
 
-        # : Iterate over each row in the csv using reader object
+        # : Iterate over each row in csv using reader object
         for row in rows:
 
-            # : Check if random genWord matches the word in the CSV file
+            # : Check random word matches word in CSV file
             if row['word'] == gen_word:
-
                 match_found = True
 
-                # : ERROR handling -> read from csv -> Get id, word, riddle from row
-                # key = row.get('id')   # output = None
-                # word = row['word']
+                # : ERROR handling -> read from csv -> Get riddle from row
                 riddle = row['riddle']
                 break
 
         # : Print riddle if match found
         if match_found:
-            # print("id:", key)
-            # print("Word:", word)
             print("\nHere's a riddle:", "\n")
             print(riddle)
             print("\nwhat am I?")
@@ -91,37 +86,36 @@ def play_game():
 
     while not end_game:
 
-        # : User input for letter guess and exiting game
+        # : Letter guess input
         u_guess = input("\nGuess a letter or press 'Zero' and 'Enter' to quit game: ").lower()
 
-        # : Error handling for already guessed letters
+        # : ERROR handling -> already guessed letters
         if u_guess in display_word:
             print("You already guessed that letter")
 
-        # : EXIT game option at letter guessing stage
-        # : Cant use letters as a break-out condition, as letter could be in the word list
+        # : EXIT game option -> can't use letters as a break-out condition
         if u_guess == "0":
             print("Yeah Nice! Catch ya next time")
-            # end_game = True  # : Not needed -> entering '0' will break out of the loop
+            # end_game = True  # : Not needed
             break
 
-        # : User input error handling-> letters only-> 'isalpha()' Linux/iSO compatible method
+        # : ERROR handling -> letters only-> 'isalpha()' Linux/iSO compatible method
         if u_guess.isalpha() and len(u_guess) == 1:
 
-            # : Cross-reference user letter guess with letter in gen_word
+            # : Cross-reference letter guess with letters in word
             for letter_position in range(word_length):
 
-                # : Get letter at the position
+                # : Get letter position
                 letter = shuffled_word[letter_position]
 
-                # : If the letter is in word, replace the underscore with the letter
+                # : If letter in word, replace underscore with letter
                 if letter == u_guess:
                     display_word[letter_position] = letter
 
             # : Print the display_word list as a string
             print(" ".join(display_word))
 
-            # : If the letter not in word -> remove a life
+            # : If letter not in word -> remove a life
             if u_guess not in gen_word:
                 print(f"You guessed {u_guess}, that's not in the word. You lose a life")
                 lives -= 1
@@ -129,7 +123,7 @@ def play_game():
                     end_game = True
                     print("You lose!")
 
-            # : While loop BREAK OUT condition -> if no more underscores in display_word list, user has won game
+            # : While loop BREAK OUT condition -> if no more underscores in display_word list, user won game
             elif "_" not in display_word:
                 end_game = True
                 print(f"You win! The word was {gen_word}")
@@ -143,3 +137,5 @@ def play_game():
 
 if __name__ == "__main__":
     play_game()
+
+# : =================== End of file ====================
