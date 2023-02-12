@@ -71,20 +71,25 @@ application:
 
 ## Features
 
-1. **Random Word Generation:** A random word is selected from a pre-defined word list, ```hangman1_wordList.word_list```, 
-   using the ```random.choice()``` method. 
-2. **Dyslexic Letter Shuffle:** The selected word is converted to a list, the letters are shuffled using ```random.
-   shuffle()``` method and then converted back to a string. 
-3. **Riddle Clue:** A riddle is generated as a clue to the word to be guessed. The code uses a CSV file```hangman1_clue.csv``` 
-to search for the randomly generated word, and if a match is found, the corresponding riddle is displayed to the user. 
-4. **Game Play Loop:** The game play loop is implemented using a while loop that continues until the user either 
-correctly guesses the word or runs out of lives. The user is prompted to guess a letter, and the code checks if the 
-letter is in the word. If the letter is in the word, the corresponding underscores are replaced with the letter. If the letter is 
-not in the word, the user loses a life, and the hangman ASCII art is updated. 
-5. **End Game Condition:** The while loop breaks out when either all the letters in the word have been correctly 
-   guessed, 
-or the user runs out of lives. In the first case, the user wins, and in the second case, the user loses. 
-6. **ASCII Art:** The code uses ASCII art to represent the hangman stages, which is imported from the hangman1_ascii 
+- **Random Word Generation:** A random word is selected from a pre-defined word list, ```hangman1_wordList.
+  word_list```, using the ```random.choice()``` method.
+
+- **Dyslexic Letter Shuffle:** The selected word is converted to a list, the letters are shuffled using ```random.
+   shuffle()``` method and then converted back to a string.
+
+- **Riddle Clue:** A riddle is generated as a clue to the word to be guessed. The code uses a CSV 
+  file```hangman1_clue.csv```to search for the randomly generated word, and if a match is found, the corresponding 
+  riddle is displayed to the user.
+
+- **Game Play Loop:** The game play loop is implemented using a while loop that continues until the user either 
+    correctly guesses the word or runs out of lives. The user is prompted to guess a letter, and the code checks if the 
+    letter is in the word. If the letter is in the word, the corresponding underscores are replaced with the letter. If 
+    the letter is not in the word, the user loses a life, and the hangman ASCII art is updated.
+
+- **End Game Condition:** The while loop breaks out when either all the letters in the word have been correctly 
+   guessed, or the user runs out of lives. In the first case, the user wins, and in the second case, the user loses.
+
+- **ASCII Art:** The code uses ASCII art to represent the hangman stages, which is imported from the hangman1_ascii 
    module.
 
 ## Additional Features for Future Development
@@ -93,19 +98,26 @@ The here are just some of many examples for additional features that can be adde
 I choose the following features because they will improve the users engagement during game play and make the games code 
 more readable and maintainable.
 
-1. **Graphical User Interface (GUI):** using Tkinter.
-2. **Clear screen:** functionality that refreshes the ASCII art after each guess.
-3. **Save game:** functionality that saves the game state to a file.
-4. **Word Length:** The game can be made more challenging by adding word length. The user can choose between short, 
+- **Graphical User Interface (GUI):** using Tkinter.
+
+- **Clear screen:** functionality that refreshes the ASCII art after each guess.
+
+- **Save game:** functionality that saves the game state to a file.
+
+- **Word Length:** The game can be made more challenging by adding word length. The user can choose between short, 
    medium, and long words. The short words will have 4 to 6 letters, the medium words will have 7 to 9 letters, and the 
    long words will have 10 or more letters.
-5. **Word Categories:** The game can be made more challenging by adding word categories. The user can choose between 
+
+- **Word Categories:** The game can be made more challenging by adding word categories. The user can choose between 
    different categories, such as animals, food, and sports. The code will then randomly select a word from the 
-   selected category
-6. **User defined functions and / or Classes:** A version of the Game made up entirely of user defined functions or 
+   selected category.
+
+- **User defined functions and / or Classes:** A version of the Game made up entirely of user defined functions or 
    Classes to improve code readability and maintainability.
-7. **Pandas:** Third party library that can be used to read the CSV file or.
-8. **JSON file:** The code can be modified to use a JSON file to store the words and riddles.
+
+- **Pandas:** Third party library that can be used to read the CSV file or.
+
+- **JSON file:** The code can be modified to use a JSON file to store the words and riddles.
 
 ---
 
