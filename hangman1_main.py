@@ -8,13 +8,12 @@
 
 
 import csv
-import random
 import hangman1_wordList
+import random
 from hangman1_ascii import intro, stage
 
 
 def play_game():
-
     # : =================== ASCII art Intro ====================
 
     print("\nHey! Welcome to")
@@ -58,27 +57,26 @@ def play_game():
         # : Search for word in CSV file
         match_found = False
 
-        # : Initialize var or PyCharm will lose its shit
+        # : Initialize var to store riddle
         riddle = ""
 
         # : Iterate over each row in csv using reader object
         for row in rows:
-
             # : Check random word matches word in CSV file
             if row['word'] == gen_word:
                 match_found = True
 
-                # : ERROR handling -> read from csv -> Get riddle from row
+                # : Read from CSV file
                 riddle = row['riddle']
                 break
 
-        # : Print riddle if match found
+        # : ERROR handling PASS -> display riddle if match found
         if match_found:
             print("\nHere's a riddle:", "\n")
             print(riddle)
             print("\nwhat am I?")
 
-        # : ERROR handling -> message if match not found
+        # : ERROR handling FAIL -> message if match not found
         else:
             print("Match not found.")
 
@@ -86,7 +84,7 @@ def play_game():
 
     while not end_game:
 
-        # : Letter guess input
+        # : User guess input
         u_guess = input("\nGuess a letter or press 'Zero' and 'Enter' to quit game: ").lower()
 
         # : ERROR handling -> already guessed letters
