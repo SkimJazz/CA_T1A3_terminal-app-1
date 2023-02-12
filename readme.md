@@ -32,7 +32,7 @@ their lives. The user also has the option to exit the game at any time by enteri
 ## Links
 
 - [GitHub Repository](https://github.com/SkimJazz/CA_T1A3_terminal-app-1)
-- [Trello](   )
+- [Trello](https://trello.com/b/JG1YwlOK/ca-t1a3-terminal-app)
 - [Preso Video - YouTube](   )
 
 ---
@@ -224,7 +224,7 @@ word, the game will replace the underscore with the letter. If the letter is not
 
 ## Algorithmic Thinking and Logic
 
-### Dyslexic Letter Shuffle
+### Dyslexic Letter Shuffle:
 The letters in the word to guess are shuffled, making it different from a traditional Hangman Game. This feature was 
 added to make the game more challenging, but it also has a practical purpose for dyslexics.
 
@@ -233,22 +233,71 @@ it more challenging for everyone, and it also simulates some of the difficulties
 spell words. This feature makes the game both fun and educational, as it helps players understand some of the 
 challenges that dyslexics face in their daily lives.
 
-The Dyslexic Letter Shuffle feature in this Hangman Game is a unique and meaningful addition that 
-makes the game more challenging and educational for players of all levels.
+<br>
 
 Here's how the **Dyslexic Letter Shuffle** feature works:
 
-1. The computer selects a random word from the pre-defined word list.
-2. The word is converted to a list of letters.
-3. The letters in the list are shuffled using the ```random.shuffle()``` method.
-4. The letters in the list are converted back to a string.
-5. When the player guesses a correct letter, the letter replaces the underscores in the word
-6. But the correct letter/s are not in the correct order according to the correctly spelled word.
+The code follows a straightforward logic and is structured in a way to make it easy to understand and maintain. The 
+shuffling feature is implemented in a way that ensures that each time the game is played, a different word will be 
+displayed to the user in a shuffled form.
 
+
+- **Random Word Generation:** A word is selected randomly from a pre-defined word list. The list of words is stored 
+  in the ```hangman1_wordList.word_list``` module. The function ```random.choice``` is used to select a word from the 
+  list.
+
+```python
+# : hangman1_main.py -> Randomly select a word from the wordList
+gen_word = random.choice(hangman1_wordList.word_list)
+
+# : hangman1_wordList.py -> List of words to be used in the game
+word_list = ['eagle', 'penguin', 'wolf']
+```
+
+- **Word to List Conversion:** The selected word is converted into a list of individual characters. This step is 
+  done to make it easier to shuffle the letters of the word.
+
+```python
+# : Convert the randomly generated word to a list
+    word_list = list(gen_word)
+```
+
+- **Shuffling of Letters:** The random.shuffle function is used to shuffle the letters in the list. This function 
+  rearranges the order of the elements in the list randomly.
+
+```python
+# : Shuffle letters in the list
+    random.shuffle(word_list)
+```
+- **List to Word Conversion:** The shuffled letters are then converted back to a string by using the join method. The 
+  result is stored in the variable shuffled_word.
+
+```python
+# : Convert the shuffled letters back to a string
+    shuffled_word = "".join(word_list)
+```
+
+- **Word Length Calculation:** The length of the shuffled word is calculated and stored in the variable 
+  ```word_length```.
+
+```python
+# : Get the length of shuffled word
+    word_length = len(shuffled_word)
+```
+
+- **Initializing the Display Word:** The list ```display_word``` is initialized to store the characters to be displayed
+to the user. This list is initialized with a set of underscores that are equal in number to the length of the shuffled 
+  word. The underscores represent the missing letters that the user needs to guess.
+
+```python
+display_word = []
+    for _ in range(word_length):
+        display_word += "_"
+```
 
 <br>
 
-### Riddle Clue
+### Riddle Clue:
 
 The Riddle feature in this Dyslexic Hangman Game adds an element of fun and engagement to the game. Instead 
 of just guessing the word through trial and error, the player must also solve a riddle to determine the word they are 
@@ -259,10 +308,12 @@ For dyslexic players, this feature can also provide a more accessible way to pla
 on spelling the word, the player can use their creativity and critical thinking skills to solve the riddle and 
 determine the word. This can make the game a more positive and empowering experience for dyslexic players.
 
-### ASCII Art
+### Game Play Loop:
+
 
 <br>
 
+---
 
 Here's how the game works:
 
