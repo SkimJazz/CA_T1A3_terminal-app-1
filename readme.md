@@ -29,6 +29,28 @@ their lives. The user also has the option to exit the game at any time by enteri
 
 ---
 
+## Links
+
+- [GitHub Repository](https://github.com/SkimJazz/CA_T1A3_terminal-app-1)
+- [Trello](   )
+- [Preso Video - YouTube](   )
+
+---
+
+## Tech Stack
+
+- Python 3.11.0 - Programming Language
+- Pytest 6.2.5 - Testing **(Check if this is updated version)**
+- Windows 10 - Operating System
+- PyCharm IDE - To write and test code
+- Git and GitHub - Version Control & Documentation
+- Trello - Project Management
+- ClipChamp - Video Presentation
+- YouTube - Presentation Hosting
+- MS Powerpoint - Slide Deck
+
+---
+
 ## Style Guide
 
 This Terminal Application follows the PEP 8 style guide.
