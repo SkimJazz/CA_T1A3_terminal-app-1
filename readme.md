@@ -404,53 +404,65 @@ making it easier to understand and modify the code if needed.
 Here's how the **Game Play Loop** section works:
 
 
-- **Game play loop:** The game play loop starts with a while loop that continues until the end of the game. The end of 
+- **Play loop:** The game play loop starts with a while loop that continues until the end of the game. The end of 
 the game is defined by a variable "end_game", which is initially set to False.
 
 ```python
-
-
+while not end_game:
 ```
 
-- **User guess input:** The code takes the user's guess as input and converts it to lowercase using the ```input()``` 
-function and the ```lower()``` method.
+- **User guess input:** The code takes the user's guess as an input then converts it to a lowercase using the 
+```input()``` function and the ```lower()``` method.
 
 ```python
-
-
+    # : User guess input
+    u_guess = input("\nGuess a letter or press 'Zero' and 'Enter' to quit game: ").lower()
 ```
 
-- **Error handling:** The code checks if the user's guess has already been made by checking if it is in the 
+- **Error handling:** The code checks if the user's guess has already been made by checking if the letter is in the 
 ```display_word``` list. If the user's guess has already been made, the code prints an error message.
 
 ```python
-
-
+    # : ERROR handling -> already guessed letters
+    if u_guess in display_word:
+        print("You already guessed that letter")
 ```
 
-- **Exit game option:** The code checks if the user's guess is equal to ```0```. If it is, the code breaks out of the 
-  while loop and the game ends.
+- **Exit game option:** The code then checks if the user entered ```0``` as the input, which is used as an option to 
+exit the game. If the input is ```0```, the code breaks out of the ```while not end_game``` loop and the game ends.
 
 ```python
-
-
+    # : EXIT game option -> can't use letters as a break-out condition
+    if u_guess == "0":
+        print("Yeah Nice! Catch ya next time")
+        # end_game = True  # : Not needed
+        break
 ```
 
-- **Check validity of guess:** The code checks if the user's guess is a single letter by using the ```isalpha()```
-method and checking the length of the input using the ```len()``` function. If the user's guess is not a single letter, 
-the code prints out an error message. I chose the ```isalpha()``` method for case sensitivity, since its compatible with 
-Windows, iSO, and Linux.
+- **Check validity of guess:** The code checks if the user's guess is a single letter using the ```isalpha()```
+method and checking the length of the input using the ```len()``` function. If the user's guess isn't a single letter, 
+the code prints out an error message. I chose the ```isalpha()``` method to check if the input consists of only 
+alphabetical characters, since its compatible with Windows, iSO, and Linux.
 
 ```python
+ # : ERROR handling -> letters only-> 'isalpha()' Linux/iSO compatible method
+        if u_guess.isalpha() and len(u_guess) == 1:
 
+        # : Rest of the code goes here ... lines 89 - 131
 
+        else:
+            print("Invalid input. Please enter a single letter.")
 ```
 
 - **Cross-reference guess with word:** If the user's guess is a single letter, the code starts a for loop to 
 cross-reference the user's guess with the letters in the word.
 
 ```python
+        # : Cross-reference letter guess with letters in word
+        for letter_position in range(word_length):
 
+            # : Get letter position
+            letter = shuffled_word[letter_position]
 
 ```
 
@@ -458,26 +470,39 @@ cross-reference the user's guess with the letters in the word.
 list is replaced with the letter. If not, the user loses a life.
 
 ```python
+        # : If letter in word, replace underscore with letter
+            if letter == u_guess:
+                display_word[letter_position] = letter
 
+        # : Print the display_word list as a string
+        print(" ".join(display_word))
 
 ```
 
 - **Check win/lose conditions:** The code checks if there are no more underscores in the ```display_word``` list. If 
 there are no more underscores, the user has won the game and the ```end_game``` variable is set to ```True```. If the 
-user loses all their lives, the ```end_game``` variable is also set to True and the code prints a message indicating
-that the user has lost the game.
+user loses all their lives, the ```end_game``` variable is also set to True. The code prints a message indicating
+to the user they have lost the game. The code prints the updated ```display_word``` list, the hangman stage, and the 
+win/lose status.
 
 ```python
+        # : If letter not in word -> remove a life
+        if u_guess not in gen_word:
+            print(f"You guessed {u_guess}, that's not in the word. You lose a life")
+            lives -= 1
+            if lives == 0:
+                end_game = True
+                print("You lose!")
+        
+        # : While loop BREAK OUT condition -> if no more underscores in display_word list, user won game
+        elif "_" not in display_word:
+            end_game = True
+            print(f"You win! The word was {gen_word}")
 
-
+        # : Method - using 'from hangman1_ascii import stage' and calling the stages from hangman1_ascii.py
+        print(stage[lives])
 ```
 
-- **Print status:** The code prints the updated ```display_word``` list, the hangman stage, and the win/lose status.
-
-```python
-
-
-```
 ---
 
 
