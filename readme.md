@@ -233,8 +233,10 @@ word, the game will replace the underscore with the letter. If the letter is not
 > - ===== Read CSV file =====
 > - ===== Game Play Loop =====
 
+<br>
 
 ### Dyslexic Letter Shuffle:
+
 The letters in the word to guess are shuffled, making it different from a traditional Hangman Game. This feature was 
 added to make the game more challenging, but it also has a practical purpose for dyslexics.
 
@@ -324,7 +326,7 @@ the outcome of the search.
 
 <br>
 
-Here's how the **Read CSV file** section works:
+Here's how the **Read CSV file** section works for displaying the riddle:
 
 - **Open the CSV file:** The code uses the ```with``` statement to open the file ```hangman1_clue.csv``` for reading. 
   This ensures that the file will be properly closed after the code within the block is executed.
@@ -390,149 +392,97 @@ with open('hangman1_clue.csv', "r") as read_obj:
 
 ### Game Play Loop:
 
+The Game Play Loop provides a simple and straightforward implementation of a word guess, allowing the user to 
+guess letters and updating the display word based on the user's guesses.
+
+The logic behind the algorithm is to provide a basic game play loop that takes a users input, checks for errors and 
+win/lose conditions, and updates the game status. The algorithm provides a clear and readable flow of the game's logic,
+making it easier to understand and modify the code if needed.
 
 <br>
 
+Here's how the **Game Play Loop** section works:
+
+
+- **Game play loop:** The game play loop starts with a while loop that continues until the end of the game. The end of 
+the game is defined by a variable "end_game", which is initially set to False.
+
+```python
+
+
+```
+
+- **User guess input:** The code takes the user's guess as input and converts it to lowercase using the ```input()``` 
+function and the ```lower()``` method.
+
+```python
+
+
+```
+
+- **Error handling:** The code checks if the user's guess has already been made by checking if it is in the 
+```display_word``` list. If the user's guess has already been made, the code prints an error message.
+
+```python
+
+
+```
+
+- **Exit game option:** The code checks if the user's guess is equal to ```0```. If it is, the code breaks out of the 
+  while loop and the game ends.
+
+```python
+
+
+```
+
+- **Check validity of guess:** The code checks if the user's guess is a single letter by using the ```isalpha()```
+method and checking the length of the input using the ```len()``` function. If the user's guess is not a single letter, 
+the code prints out an error message. I chose the ```isalpha()``` method for case sensitivity, since its compatible with 
+Windows, iSO, and Linux.
+
+```python
+
+
+```
+
+- **Cross-reference guess with word:** If the user's guess is a single letter, the code starts a for loop to 
+cross-reference the user's guess with the letters in the word.
+
+```python
+
+
+```
+
+- **Update display word:** If the user's guess is in the word, the corresponding underscore in the ```display_word``` 
+list is replaced with the letter. If not, the user loses a life.
+
+```python
+
+
+```
+
+- **Check win/lose conditions:** The code checks if there are no more underscores in the ```display_word``` list. If 
+there are no more underscores, the user has won the game and the ```end_game``` variable is set to ```True```. If the 
+user loses all their lives, the ```end_game``` variable is also set to True and the code prints a message indicating
+that the user has lost the game.
+
+```python
+
+
+```
+
+- **Print status:** The code prints the updated ```display_word``` list, the hangman stage, and the win/lose status.
+
+```python
+
+
+```
 ---
 
-Here's how the game works:
-
-1. The computer selects a random word from a list of words and shuffles the letters in the word.
-2. The player is shown the length of the word as a series of underscores and is asked to guess a letter.
-3. If the letter is in the word, the computer replaces the underscores with the correctly guessed letter.
-4. If the letter is not in the word, the player loses a "life." The player starts with 6 lives, and the game ends when
-   either all the letters have been correctly guessed or the player has used up all of their lives.
-5. The computer also displays a riddle that corresponds to the word the player is trying to guess, to provide an 
-   additional clue.
-6. The player can choose to quit the game at any time by entering "0."
-
-The code uses various techniques and algorithms to make the game work, such as loops and conditionals to control the 
-flow of the game and keep track of the player's lives and guesses, and the use of lists and strings to display the 
-word and the guessed letters. The game also uses error handling to ensure that the player inputs valid information 
-and to give helpful messages if the input is incorrect.
 
 
-### Code explanation - Iterative Steps
 
-1. Import the required modules: csv, random, hangman1_wordList, and hangman1_ascii. 
-2. Define a function play_game to start the game.
-3. Display an ASCII art intro and provide information about the game to the user.
-4. Choose a word randomly from the word list in hangman1_wordList module.
-5. Convert the randomly generated word to a list, shuffle the letters, and then convert it back to a string.
-6. Create an empty list display_word to store the letters that have been correctly guessed.
-7. Initialize variables for the game such as end_game to indicate whether the game is over, lives to keep track of 
-remaining chances, and match_found to keep track of whether the word is found in the csv file. 
-8. Open the csv file hangman1_clue.csv using the open function.
-9. Use a csv reader object to read the contents of the csv file.
-10. Iterate over each row in the csv file and check if the randomly generated word matches the word in the csv file. 
-If a match is found, retrieve the riddle from the corresponding row and display it to the user.
-11. Start a while loop to run the game until end_game is True.
-12. In each iteration of the while loop, get the user's guess of a letter.
-13. If the user's input is "0", end the game.
-14. If the user's input is a single letter, check if it's in the shuffled word. If it's in the word, replace the 
-corresponding underscores in display_word with the letter.
-15. If the letter is not in the shuffled word, decrement the lives by 1. If lives reaches 0, end the game and display 
-a message "You lose!".
-16. If there are no more underscores in display_word, end the game and display a message "You win!".
-17. Display the corresponding ASCII art stage based on the number of lives remaining.
-18. If the user's input is not a single letter, display an error message "Invalid input. Please enter a single letter."
-19. Finally, if the __name__ of the script is __main__, call the play_game function.
-
-
-- ASCII art intro is printed on the screen.
-
-```python
-print("\nHey! Welcome to")
-print(intro)
-print("\nThis Hangman game has a twist. The letters in the word are shuffled. Good luck!")
-```
-
-- A random word is selected from the word_list and shuffled.
-
-```python
-gen_word = random.choice(hangman1_wordList.word_list)
-word_list = list(gen_word)
-random.shuffle(word_list)
-shuffled_word = "".join(word_list)
-word_length = len(shuffled_word)
-```
-
-- The display_word list is initialized with underscores.
-
-```python
-display_word = []
-for _ in range(word_length):
-    display_word += "_"
-```
-- The hangman1_clue.csv file is opened and read to find the matching word and get its associated riddle.
-
-```python
-with open('hangman1_clue.csv', "r") as read_obj:
-    reader = csv.DictReader(read_obj)
-    rows = list(reader)
-    match_found = False
-    riddle = ""
-    for row in rows:
-        if row['word'] == gen_word:
-            match_found = True
-            riddle = row['riddle']
-            break
-    if match_found:
-        print("\nHere's a riddle:", "\n")
-        print(riddle)
-        print("\nwhat am I?")
-    else:
-        print("Match not found.")
-```
-
-- The game loop starts where the user is asked to enter a letter guess.
-
-```python
-while not end_game:
-    u_guess = input("\nGuess a letter or press 'Zero' and 'Enter' to quit game: ").lower()
-```
-
-- The entered letter is checked against the display_word list to see if the user has already guessed that letter.
-
-```python
-if u_guess in display_word:
-    print("You already guessed that letter")
-```
-
-- The user has the option to exit the game by entering '0'.
-
-```python
-if u_guess == "0":
-    print("Yeah Nice! Catch ya next time")
-    break
-```
-- The entered letter is validated to ensure that it's a single letter.
-
-```python
-if u_guess.isalpha() and len(u_guess) == 1:
-```
-- The letter is compared to the letters in the word. If the letter is in the word, the corresponding underscore is 
-replaced.
-
-```python
-for letter_position in range(word_length):
-    letter = shuffled_word[letter_position]
-    if letter == u_guess:
-        display_word[letter_position] = letter
-print(" ".join(display_word))
-```
-
-- If the letter is not in the word, a life is lost, and the number of lives is checked. If all lives are lost, the 
-game ends, and the user loses.
-
-```python
-if u_guess not in gen_word:
-    print(f"You guessed {u_guess}, that's not in the word. You lose a life")
-    lives -= 1
-    if lives == 0:
-        end_game = True
-        print("You lose!")
-```
 
 
 
