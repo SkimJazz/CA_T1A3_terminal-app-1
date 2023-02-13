@@ -112,6 +112,8 @@ more readable and maintainable.
    different categories, such as animals, food, and sports. The code will then randomly select a word from the 
    selected category.
 
+- **Try and Except:** Code can be modified to use try and except to handle errors.
+
 - **User defined functions and / or Classes:** A version of the Game made up entirely of user defined functions or 
    Classes to improve code readability and maintainability.
 
@@ -224,6 +226,14 @@ word, the game will replace the underscore with the letter. If the letter is not
 
 ## Algorithmic Thinking and Logic
 
+> **NOTE:** Algorithmic thinking and Logic is explained in terms of the following sections in the code and not 
+> according 
+> to the features listed in the Features section above, as some features overlap, and well; it just makes more sense!
+> - ===== Dyslexic Letter Shuffle =====
+> - ===== Read CSV file =====
+> - ===== Game Play Loop =====
+
+
 ### Dyslexic Letter Shuffle:
 The letters in the word to guess are shuffled, making it different from a traditional Hangman Game. This feature was 
 added to make the game more challenging, but it also has a practical purpose for dyslexics.
@@ -233,13 +243,13 @@ it more challenging for everyone, and it also simulates some of the difficulties
 spell words. This feature makes the game both fun and educational, as it helps players understand some of the 
 challenges that dyslexics face in their daily lives.
 
-<br>
-
-Here's how the **Dyslexic Letter Shuffle** feature works:
-
 The code follows a straightforward logic and is structured in a way to make it easy to understand and maintain. The 
 shuffling feature is implemented in a way that ensures that each time the game is played, a different word will be 
 displayed to the user in a shuffled form.
+
+<br>
+
+Here's how the **Dyslexic Letter Shuffle** section works:
 
 
 - **Random Word Generation:** A word is selected randomly from a pre-defined word list. The list of words is stored 
@@ -297,7 +307,7 @@ display_word = []
 
 <br>
 
-### Riddle Clue:
+### Read CSV file:
 
 The Riddle feature in this Dyslexic Hangman Game adds an element of fun and engagement to the game. Instead 
 of just guessing the word through trial and error, the player must also solve a riddle to determine the word they are 
@@ -307,6 +317,76 @@ problem-solving skills to both decipher the riddle and guess the word.
 For dyslexic players, this feature can also provide a more accessible way to play the game. Rather than just focusing 
 on spelling the word, the player can use their creativity and critical thinking skills to solve the riddle and 
 determine the word. This can make the game a more positive and empowering experience for dyslexic players.
+
+The logic behind Read CSV file section is to efficiently search for a word in a CSV file and retrieve the corresponding
+riddle. The code handles any errors that may occur during the search and provides clear messages to the user indicating 
+the outcome of the search.
+
+<br>
+
+Here's how the **Read CSV file** section works:
+
+- **Open the CSV file:** The code uses the ```with``` statement to open the file ```hangman1_clue.csv``` for reading. 
+  This ensures that the file will be properly closed after the code within the block is executed.
+
+```python
+with open('hangman1_clue.csv', "r") as read_obj:
+```
+
+- **Read the contents of the file:** The code uses the ```csv.DictReader``` method to read the contents of the file and 
+  store it in the ```reader``` object. The contents of the file are then stored in a list called ```rows```.
+
+```python
+reader = csv.DictReader(read_obj)
+        rows = list(reader)
+```
+
+- **Initialize variables:** The code initializes the ```match_found``` variable to False and the ```riddle``` variable 
+  to an empty string. These variables will be used to keep track of whether a match has been found and to store the 
+  corresponding riddle.
+
+```python
+# : Search for word in CSV file
+        match_found = False
+
+# : Initialize var to store riddle
+riddle = ""
+```
+
+- **Search for the word:** The code uses a for loop to iterate over each row in the ```rows``` list. For each row, the
+  code checks if the ```word``` key in the row dictionary matches the ```gen_word``` variable. If a match is found, the 
+  code sets the ```match_found``` variable to True and stores the riddle corresponding to the word in the ```riddle``` 
+  variable. The loop then breaks, since there is no need to keep searching if a match has been found.
+
+```python
+# : Iterate over each row in csv using reader object
+        for row in rows:
+            # : Check random word matches word in CSV file
+            if row['word'] == gen_word:
+                match_found = True
+
+                # : Read from CSV file
+                riddle = row['riddle']
+                break
+```
+
+- **Handle the outcome of the search:** The code uses an ```if``` statement to handle the outcome of the search. If a 
+  match was found, the code displays the riddle along with a message. If a match was not found, the code displays a 
+  message indicating that a match was not found.
+
+```python
+# : ERROR handling PASS -> display riddle if match found
+        if match_found:
+            print("\nHere's a riddle:", "\n")
+            print(riddle)
+            print("\nwhat am I?")
+
+        # : ERROR handling FAIL -> message if match not found
+        else:
+            print("Match not found.")
+```
+
+<br>
 
 ### Game Play Loop:
 
