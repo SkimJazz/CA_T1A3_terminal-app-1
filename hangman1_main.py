@@ -20,7 +20,7 @@ def play_game():
     print(intro)
     print("\nThis Hangman game has a twist. The letters in the word are shuffled. Good luck!")
 
-    # : =================== Random word & letter shuffle ====================
+    # : =================== Dyslexic letter shuffle ====================
 
     # : Randomly select a word from the wordList
     gen_word = random.choice(hangman1_wordList.word_list)
