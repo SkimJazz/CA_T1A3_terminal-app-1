@@ -337,8 +337,8 @@ with open('hangman1_clue.csv', "r") as read_obj:
   store it in the ```reader``` object. The contents of the file are then stored in a list called ```rows```.
 
 ```python
-reader = csv.DictReader(read_obj)
-        rows = list(reader)
+    reader = csv.DictReader(read_obj)
+    rows = list(reader)
 ```
 
 - **Initialize variables:** The code initializes the ```match_found``` variable to False and the ```riddle``` variable 
@@ -346,11 +346,11 @@ reader = csv.DictReader(read_obj)
   corresponding riddle.
 
 ```python
-# : Search for word in CSV file
-        match_found = False
-
-# : Initialize var to store riddle
-riddle = ""
+    # : Search for word in CSV file
+    match_found = False
+    
+    # : Initialize var to store riddle
+    riddle = ""
 ```
 
 - **Search for the word:** The code uses a for loop to iterate over each row in the ```rows``` list. For each row, the
