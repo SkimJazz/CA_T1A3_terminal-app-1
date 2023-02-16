@@ -32,8 +32,8 @@ their lives. The user also has the option to exit the game at any time by enteri
 ## Links
 
 - [GitHub Repository](https://github.com/SkimJazz/CA_T1A3_terminal-app-1)
-- [Trello](https://trello.com/b/JG1YwlOK/ca-t1a3-terminal-app)
-- [Preso Video - YouTube](   )
+- [Trello](   )
+- [Presentation Video - YouTube](   )
 
 ---
 
