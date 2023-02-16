@@ -46,7 +46,9 @@ def play_game():
     # : =================== Game variables ====================
 
     end_game = False
-    lives = 6  # : 6 incorrect guesses before game over -> 6 stages of ASCII art
+
+    # : stages of ASCII art
+    lives = 6
 
     # : =================== Read CSV file ====================
 
