@@ -35,20 +35,3 @@ def test_riddle_clue():
     clue = [row['riddle'] for row in clue_rows if row['word'] == gen_word]
     assert clue, f"No clue found for word '{gen_word}' in hangman1_clue.csv"
 
-
-# : =================== Test-2 Manual Testing ====================
-
-# Testing the user's ability to guess a correct letter:
-
-
-# : Win scenario:
-
-# Start the game by running the hangman1_main.py file.
-# Observe the display_word which should contain underscores representing the length of the word to be guessed.
-# Input a letter in the guessing field.
-# Check if the letter appears in the display_word.
-# Repeat the process until you win the game.
-
-# : Lose scenario:
-
-# Repeat the process until you lose the game
