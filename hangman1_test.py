@@ -1,7 +1,7 @@
 import csv
 import random
+from src import hangman1_wordList
 import hangman1_main
-import hangman1_wordList
 
 
 # : =================== Test-1 Random Word Generation ====================
