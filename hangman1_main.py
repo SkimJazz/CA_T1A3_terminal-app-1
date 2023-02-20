@@ -8,9 +8,9 @@
 
 
 import csv
-from src import hangman1_wordList
+import hangman1_wordList
 import random
-from src.hangman1_ascii import intro, stage
+from hangman1_ascii import intro, stage
 
 
 def play_game():
