@@ -94,7 +94,7 @@ def play_game():
             print("You already guessed that letter")
 
         # : EXIT game option -> can't use letters as a break-out condition
-        if u_guess == "0":
+        elif u_guess == "0":
             print("Yeah Nice! Catch ya next time")
             # end_game = True  # : Not needed
             break
