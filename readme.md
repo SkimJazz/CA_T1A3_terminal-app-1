@@ -123,26 +123,14 @@ more readable and maintainable.
 
 ---
 
-## Installation
+## Requirements to Run Game:
 
-
-### Requirements to Run Game:
-> NEED TO UPDATE the following
-
-1. Python 3.11.0
+1. Python 3.8 or later
 2. Pip 21.2.4
 3. Pytest 6.2.5
 4. Windows 10 or 11, macOS Operating Systems
-5. Terminal to install and run the Game
-
-
-### Installation Instructions:
-
-1. Download the code from the GitHub repository:
-2. Open the terminal and navigate to the folder where the code is saved.
-3. Run ```pip install -r requirements.txt``` to install the required libraries.
-4. Run ```python3 hangman1.py``` to start the game.
-
+5. PyCharm IDE (optional)
+6. Visual Studio Code (optional)
 
 ---
 
