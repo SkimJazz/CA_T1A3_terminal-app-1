@@ -40,7 +40,7 @@ their lives. The user also has the option to exit the game at any time by enteri
 ## Tech Stack
 
 - Python 3.11.0 - Programming Language
-- Pytest 6.2.5 - Testing **(Check if this is updated version)**
+- Pytest 6.2.5 - Testing
 - Windows 10 - Operating System
 - PyCharm IDE - To write and test code
 - Git and GitHub - Version Control & Documentation
@@ -126,7 +126,7 @@ more readable and maintainable.
 ## Documentation
 
 
-### Dependencies - Not needed for Game Play:
+### Dependencies - But not needed for Game Play:
 
 1. Pip 21.2.4 or later
 2. Pytest 6.2.5 or later
@@ -142,9 +142,10 @@ more readable and maintainable.
 
 ### Installation Instructions:
 
-1. Ensure that you have **Python installed** on your computer. If you do not have Python installed, you can download it 
-   from **[here](https://www.python.org/downloads/)**.
-2. Download the zip file from the GitHub repository and save it to a directory of your choice (e.g. **Desktop**).
+1. Ensure that you have **Python3 installed** on your computer. If you do not have Python3 installed, you can 
+   download it from **[here](https://www.python.org/downloads/)**.
+2. Download the zip file from the **[<> code ](https://github.com/SkimJazz/CA_T1A3_terminal-app-1)** drop-down box in 
+   the GitHub Repository and save it to a directory of your choice (e.g. **Desktop**).
 3. Unzip the file.
 4. Open Terminal or Windows Terminal and do the following:
     - ```cd``` into the directory  where the file was unzipped. e.g. ```cd desktop\CA_T1A3_terminal-app-1-main```
