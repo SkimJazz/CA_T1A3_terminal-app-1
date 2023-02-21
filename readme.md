@@ -123,19 +123,33 @@ more readable and maintainable.
 
 ---
 
-## Requirements to Run Game:
+## Documentation
+
+
+### Dependencies - Not needed for Game Play:
+
+1. Pip 21.2.4 or later
+2. Pytest 6.2.5 or later
+
+### Requirements to Run the Game:
 
 1. Python 3.8 or later
-2. Pip 21.2.4
-3. Pytest 6.2.5
-4. Windows 10 or 11, macOS Operating Systems
+2. Windows 10 or later (+ **Windows Terminal**) or
+3. macOS 10.15 or later (+ **Terminal**) or 
+4. Linux - Ubuntu 20.04 or later (+ **Terminal**)
 5. PyCharm IDE (optional)
 6. Visual Studio Code (optional)
 
----
+### Installation Instructions:
 
-## Game Play 
-
+1. Ensure that you have **Python installed** on your computer. If you do not have Python installed, you can download it 
+   from **[here](https://www.python.org/downloads/)**.
+2. Download the zip file from the GitHub repository and save it to a directory of your choice (e.g. **Desktop**).
+3. Unzip the file.
+4. Open Terminal or Windows Terminal and do the following:
+    - ```cd``` into the directory  where the file was unzipped. e.g. ```cd desktop\CA_T1A3_terminal-app-1-main```
+5. In the Terminal or Windows Terminal, type ```bash run_game.sh``` and press ```Enter```.
+6. The game will start. Go to **Game Play Instructions** below for instructions on how to play the game.
 
 ### Game play Instructions:
 
