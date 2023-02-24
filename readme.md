@@ -100,6 +100,8 @@ more readable and maintainable.
 
 - **Graphical User Interface (GUI):** using Tkinter.
 
+- **Phonics** functionality that will allow the user to guess the word by spelling it out phonetically.
+
 - **Clear screen:** functionality that refreshes the ASCII art after each guess.
 
 - **Save game:** functionality that saves the game state to a file.
