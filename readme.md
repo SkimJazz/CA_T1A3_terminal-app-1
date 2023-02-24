@@ -32,8 +32,8 @@ their lives. The user also has the option to exit the game at any time by enteri
 ## Links
 
 - [GitHub Repository](https://github.com/SkimJazz/CA_T1A3_terminal-app-1)
-- [Trello](   )
-- [Presentation Video - YouTube](   )
+- [Readme Documentation](https://github.com/SkimJazz/CA_T1A3_terminal-app-1/blob/main/readme.md)
+- [Presentation Video - YouTube](https://youtu.be/OPaGd6nUGiE)
 
 ---
 
@@ -123,7 +123,7 @@ more readable and maintainable.
 
 ---
 
-## Documentation
+## Help Documentation
 
 
 ### Dependencies - But not needed for Game Play:
@@ -133,7 +133,7 @@ more readable and maintainable.
 
 ### Requirements to Run the Game:
 
-1. Python 3.8 or later
+1. Python 3.8 or later (Python 3.11 used for development)
 2. Windows 10 or later (+ **Windows Terminal**) or
 3. macOS 10.15 or later (+ **Terminal**) or 
 4. Linux - Ubuntu 20.04 or later (+ **Terminal**)
@@ -173,59 +173,6 @@ word, the game will replace the underscore with the letter. If the letter is not
 
 ---
 
-## Implementation and Management
-
-
-
-### Game Play Loop:
-
-- The game play loop is implemented using a while loop that continues until the user either correctly guesses the 
-  word or runs out of lives.
-> Add Trello img
-
-### Random Word Generation:
-
-- Random word is selected from a pre-defined word list, 
-```hangman1_wordList.word_list```, using the ```random.choice()``` method.
-> Add Trello img
-
-### End Game Condition:
-
-- The game ends when the user correctly guesses the word or runs out of lives.
-- Option to play again or quit game
-> Add Trello img
-
-### ASCII Art:
-
-- ASCII art is imported from the hangman1_ascii module.
-- ASCII art is displayed at each stage of the game.
-- ASCII art is displayed at the end of the game.
-
-> Add Trello img
-
-### Dyslexic Letter Shuffle:
-
-- The selected word is converted to a list, the letters are shuffled using ```random.shuffle()``` method and then 
-  converted back to a string.
-- The shuffled word is displayed to the user.
-
-> Add Trello img
-
-### Riddle Clue:
-
-- CSV search for word and associated riddle
-- CSV search for word and riddle with error handling
-- CSV search for word and riddle with error handling and user input
-
-> Add Trello img
-
-### Executable File:
-
-- Executable file created using PyInstaller
-
-> Add Trello img
-
----
 
 ## Algorithmic Thinking and Logic
 
