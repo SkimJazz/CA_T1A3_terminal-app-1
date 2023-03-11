@@ -33,7 +33,7 @@ their lives. The user also has the option to exit the game at any time by enteri
 
 - [GitHub Repository](https://github.com/SkimJazz/CA_T1A3_terminal-app-1)
 - [Readme Documentation](https://github.com/SkimJazz/CA_T1A3_terminal-app-1/blob/main/readme.md)
-- [Presentation Video - YouTube](https://youtu.be/OPaGd6nUGiE)
+
 
 ---
 
