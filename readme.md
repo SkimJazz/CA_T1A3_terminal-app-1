@@ -14,8 +14,6 @@
 
 ## Introduction
 
-New SSH Key test-2
-
 This code implements a dyslexic hangman game in Python. It generates a random word from a word list and shuffles the 
 letters. The game also includes a riddle that provides a clue for the user to the word to be guessed. 
 The game uses a CSV file to store the words and riddles.
